@@ -1,4 +1,5 @@
 import style from "../styles/inbox.module.css";
+import Link from "next/link";
 //Components
 import AddChat from "../Components/AddChat";
 import InboxCont from "../Components/InboxCont";
@@ -53,6 +54,9 @@ function Inbox() {
       {!toggle && <AddChat />}
 
       <button onClick={(e) => setToggle(!toggle)}>Add Chat</button>
+      <button>
+        <Link href="/join">Join</Link>
+      </button>
     </div>
   );
 }

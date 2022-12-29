@@ -20,6 +20,7 @@ function Join({ display }) {
         const pin3 = parseFloat(((pin * 99) / 10) * 40).toFixed(0);
 
         //Adding to local Storage
+        localStorage.clear();
         localStorage.setItem("userId", userId);
         localStorage.setItem("userName", name);
 

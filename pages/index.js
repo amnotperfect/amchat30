@@ -16,7 +16,6 @@ export default function Index() {
   return (
     <main>
       <Chat />
-      <Join display={toggle.current} />
     </main>
   );
 }

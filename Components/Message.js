@@ -1,14 +1,21 @@
 import { constants } from "buffer";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import style from "../styles/messagePage.module.css";
 
 function Message({ msg }) {
-  const userId = 28372598652717;
-  const check = userId === msg.senderId;
+  const userId = useRef();
+  const check = useRef(true);
+
+  const checkWindow = typeof window !== undefined;
+
+  if (typeof window !== undefined) {
+    userId.current = parseFloat(localStorage.getItem("userId"));
+    check.current = parseFloat(userId.current) === parseFloat(msg.senderId);
+  }
 
   return (
-    <div className={check ? style.msgCont : style.msgContRight}>
-      <span>{msg.sender}</span>
+    <div className={check && checkWindow ? style.msgCont : style.msgContRight}>
+      <p>{msg.senderName}</p>
       <p>{msg.message}</p>
       <p>{msg.messageId}</p>
     </div>

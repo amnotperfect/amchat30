@@ -49,7 +49,7 @@ export default function AddChat() {
 
       //Indentify the search
       data.forEach((a) => {
-        if (a.data().userId === parseFloat(searchId)) {
+        if (parseFloat(a.data().userId) === parseFloat(searchId)) {
           array.push(a.data());
           setUser([...array]);
         }
@@ -61,7 +61,7 @@ export default function AddChat() {
       <div className={style.addChatPage}>
         <header>
           <input type="number" onChange={(e) => setInput(e.target.value)} />
-          <span onClick={(e) => search()}>search</span>
+          <button onClick={(e) => search()}>search</button>
         </header>
         <section>
           {user !== undefined &&
