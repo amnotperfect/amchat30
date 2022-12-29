@@ -1,0 +1,76 @@
+.dontDisplay {
+  display: none;
+}
+.main {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom right, white, whitesmoke);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signIn {
+  width: 80%;
+  height: 60vh;
+  flex: 0 0 70vh;
+  border-radius: 5px;
+  padding: 20px 10px;
+  background-color: turquoise;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logIn {
+  width: 80%;
+  height: 50vh;
+  flex: 0 0 50vh;
+  border-radius: 5px;
+  padding: 20px 10px;
+  background-color: turquoise;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logIn > input,
+.signIn > input {
+  width: 50%;
+  height: 50px;
+  margin: 10px 5px;
+  border-radius: 5px;
+}
+
+.logIn > section > button,
+.signIn > section > button {
+  width: 50%;
+  margin: 10px;
+  background-color: aquamarine;
+  color: #303030;
+}
+
+.logIn > section,
+.signIn > section {
+  width: 50%;
+  height: 20%;
+  margin: 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(white, whitesmoke);
+}
+
+.logIn > section > span,
+.signIn > section > span {
+  flex: 0 0 30%;
+  font-size: 14px;
+  color: #303030;
+  margin-left: 10px;
+}

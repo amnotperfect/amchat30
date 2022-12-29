@@ -1,0 +1,60 @@
+import style from "../styles/inbox.module.css";
+//Components
+import AddChat from "../Components/AddChat";
+import InboxCont from "../Components/InboxCont";
+//Other
+import { useState, useRef } from "react";
+//Firebase
+import { app } from "./Firebase";
+import { getFirestore, getDocs, doc, collection } from "firebase/firestore";
+
+function Inbox() {
+  const [toggle, setToggle] = useState(true);
+  const stopRender = useRef(true);
+  const db = getFirestore(app);
+  const [chats, setChats] = useState([]);
+  const waitClient = useRef(false);
+
+  const userId = useRef();
+
+  if (typeof window !== "undefined") {
+    userId.current = localStorage.getItem("userId");
+    waitClient.current = true;
+  }
+
+  if (stopRender.current && waitClient) {
+    const inboxRef = collection(db, `users/${userId.current}/inbox`);
+    async function getChat() {
+      const array = [];
+      const chats = await getDocs(inboxRef);
+
+      chats.forEach((doc) => {
+        array.push(doc.data());
+        setChats([...array]);
+      });
+
+      stopRender.current = false;
+    }
+
+    getChat();
+  }
+
+  return (
+    <div className={style.main}>
+      {toggle && (
+        <div className={style.currentChats}>
+          {!stopRender.current &&
+            chats.map((chat) => {
+              return <InboxCont key={Math.random()} chat={chat} />;
+            })}
+        </div>
+      )}
+
+      {!toggle && <AddChat />}
+
+      <button onClick={(e) => setToggle(!toggle)}>Add Chat</button>
+    </div>
+  );
+}
+
+export default Inbox;

@@ -12,7 +12,30 @@ a {
 }
 
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+input{
+  outline: none;
+  border: none;
+  height: 35px;
+  background-color: whitesmoke;
+  margin: 5px;
+  padding: 10px;
+}
+
+button{
+  padding: 5px 15px ;
+  height: 35px;
+  min-width: 100px;
+  max-width: auto;
+  margin: 5px ;
+  border-radius:5px ;
+  border: none;
+  outline: none;
 }
 
 @media (prefers-color-scheme: dark) {
