@@ -149,6 +149,7 @@ function MessagePage() {
     <div className={style.main}>
       <header>
         <span>Name</span>
+        <span>Back</span>
       </header>
       <div className={style.box}>
         {!stopRender.current &&

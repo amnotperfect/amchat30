@@ -51,7 +51,7 @@ function Inbox() {
   return (
     <div className={displayInbox ? style.main : { dislay: "none" }}>
       <header>
-        <span>amchat</span>
+        <h2>amchat</h2>
         <p>Chris </p>
       </header>
       {toggle && (
@@ -69,7 +69,7 @@ function Inbox() {
         </div>
       )}
 
-      {!toggle && <AddChat />}
+      {!toggle && <AddChat toggleDisplay={toggleDisplay} />}
 
       <div className={style.bottom}>
         <button onClick={(e) => setToggle(!toggle)}>Add Chat</button>

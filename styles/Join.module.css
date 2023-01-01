@@ -20,7 +20,7 @@
   flex: 0 0 70vh;
   border-radius: 5px;
   padding: 20px 10px;
-  background-color: turquoise;
+  background-color: burlywood;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +33,7 @@
   flex: 0 0 50vh;
   border-radius: 5px;
   padding: 20px 10px;
-  background-color: turquoise;
+  background-color: burlywood;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,7 +52,7 @@
 .signIn > section > button {
   width: 50%;
   margin: 10px;
-  background-color: aquamarine;
+  background-color: bisque;
   color: #303030;
 }
 
@@ -73,4 +73,15 @@
   font-size: 14px;
   color: #303030;
   margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .logIn > input,
+  .signIn > input {
+    width: 97%;
+  }
+  .logIn > section,
+  .signIn > section {
+    width: 95%;
+  }
 }

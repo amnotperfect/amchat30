@@ -2,7 +2,7 @@
   width: 95%;
   height: 70px;
   margin: 5px;
-  background-color: azure;
+  background-color: floralwhite;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -26,17 +26,17 @@
 .main > header {
   width: 100%;
   flex: 0 0 10%;
-  background-color: floralwhite;
+  background-color: bisque;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding-left: 0px;
+  justify-content: space-between;
+  padding: 0rem 1rem;
 }
 
 .currentChats {
   width: 100%;
-  flex: 0 0 75%;
-  background-color: bisque;
+  flex: 0 0 80%;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -47,12 +47,12 @@
 
 .bottom {
   width: 100%;
-  flex: 0 0 15%;
+  flex: 0 0 10%;
   background-color: bisque;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding-left: 10px;
+  justify-content: flex-end;
+  padding: 10px;
 }
 
 .addChatPage {
@@ -62,17 +62,27 @@
 }
 
 .addChatPage > header {
-  height: 20%;
+  height: 10vh;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   padding: 10px;
-  background-color: aqua;
+  background-color: brown;
+}
+
+.addChatPage > header > input {
+  border-radius: 5px;
+  height: 40px;
+  width: 70%;
+}
+
+.addChatPage > header > button {
+  width: 25%;
 }
 
 .addChatPage > section {
-  height: 80%;
+  height: 90%;
   width: 100%;
   background-color: azure;
   display: flex;
@@ -85,7 +95,7 @@
 .userCont {
   width: 99%;
   height: 80px;
-  background-color: cyan;
+  background-color: bisque;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

@@ -14,9 +14,9 @@
   flex: 0 0 7vh;
   background-color: whitesmoke;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  padding: 5px 10px;
+  padding: 0rem 1rem;
 }
 
 .box {

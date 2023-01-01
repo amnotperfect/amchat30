@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { app } from "./Firebase";
 import { getFirestore, getDocs, collection } from "firebase/firestore";
 
-function UserCont({ user }) {
+function UserCont({ user, toggleDisplay }) {
   function setChat() {
     if (typeof window !== "undefined") {
       localStorage.setItem("currentChatId", user.userId);
@@ -16,6 +16,7 @@ function UserCont({ user }) {
       className={style.userCont}
       onClick={(e) => {
         setChat();
+        toggleDisplay();
       }}
     >
       <span>{user.name}</span>
@@ -23,7 +24,7 @@ function UserCont({ user }) {
   );
 }
 
-export default function AddChat() {
+export default function AddChat({ toggleDisplay }) {
   //controllers
   const waitClient = useRef(false);
   const stopRender = useRef(true);
@@ -66,7 +67,13 @@ export default function AddChat() {
         <section>
           {user !== undefined &&
             user.map((a) => {
-              return <UserCont key={Math.random} user={a} />;
+              return (
+                <UserCont
+                  key={Math.random}
+                  user={a}
+                  toggleDisplay={toggleDisplay}
+                />
+              );
             })}
         </section>
       </div>
