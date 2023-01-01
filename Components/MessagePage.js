@@ -24,6 +24,7 @@ function MessagePage() {
   const userName = useRef();
   const receiverId = useRef();
   const receiverName = useRef();
+  const windowCheck = typeof window !== "undefined";
 
   //Check if Next is running on client side
   if (typeof window !== "undefined") {
@@ -73,9 +74,9 @@ function MessagePage() {
         messageId: msgId,
         createdAt: serverTimestamp(),
         senderName: userName.current,
+        senderId: userId.current,
         recepient: receiverName,
         recepientId: receiverId,
-        senderId: userId,
       };
 
       //add msg to sender and recepient buckets
@@ -115,6 +116,26 @@ function MessagePage() {
 
       //initiate
       setOutBox("");
+
+      //get messages again
+
+      async function getMessages() {
+        setMessages([]);
+        //getting Messages
+        const colRef = collection(
+          db,
+          `users/${userId.current}/inbox/${receiverId.current}/messages`
+        );
+        const msgs = await getDocs(colRef);
+        const array = [];
+
+        msgs.forEach((doc) => {
+          array.push(doc.data());
+        });
+        setMessages([...array]);
+        stopRender.current = false;
+      }
+      getMessages();
     } else {
       //Alerts of errors
       outBox === "" && alert("Oops! seem like there is no meesage");
@@ -126,6 +147,9 @@ function MessagePage() {
 
   return (
     <div className={style.main}>
+      <header>
+        <span>Name</span>
+      </header>
       <div className={style.box}>
         {!stopRender.current &&
           messages.map((msg) => {

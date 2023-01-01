@@ -10,14 +10,13 @@ function Message({ msg }) {
 
   if (typeof window !== undefined) {
     userId.current = parseFloat(localStorage.getItem("userId"));
-    check.current = parseFloat(userId.current) === parseFloat(msg.senderId);
+    check.current = userId.current === msg.senderId.current;
   }
 
   return (
-    <div className={check && checkWindow ? style.msgCont : style.msgContRight}>
-      <p>{msg.senderName}</p>
+    <div className={!check ? style.msgCont : style.msgContRight}>
+      <span>{msg.senderName}</span>
       <p>{msg.message}</p>
-      <p>{msg.messageId}</p>
     </div>
   );
 }

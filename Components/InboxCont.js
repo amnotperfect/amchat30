@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import { useRef } from "react";
 
-function InboxCont({ chat }) {
+function InboxCont({ chat, toggleDisplay }) {
   const stopRender = useRef(true);
   const user = useRef();
   const checkUser = useRef(false);
@@ -20,7 +20,7 @@ function InboxCont({ chat }) {
     waitClient.current = true;
     //Determin name to display
 
-    if ((chat.senderId === user.current)) {
+    if (chat.senderId === user.current) {
       checkUser.current = true;
     }
   }
@@ -41,7 +41,12 @@ function InboxCont({ chat }) {
     }
 
     return (
-      <div className={style.inboxCont} onClick={(e) => setChat(chat)}>
+      <div
+        className={style.inboxCont}
+        onClick={(e) => {
+          setChat(chat), toggleDisplay();
+        }}
+      >
         {checkUser.current ? (
           <p>{chat.receiverName}</p>
         ) : (

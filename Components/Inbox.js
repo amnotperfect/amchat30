@@ -15,6 +15,7 @@ function Inbox() {
   const db = getFirestore(app);
   const [chats, setChats] = useState([]);
   const waitClient = useRef(false);
+  const [displayInbox, setDisplayInbox] = useState(true);
 
   const userId = useRef();
 
@@ -40,23 +41,42 @@ function Inbox() {
     getChat();
   }
 
+  //toggle display of inbox on mobile view when width is < 500
+  function toggleDisplay() {
+    if (typeof window !== undefined && window.innerWidth < 500) {
+      setDisplayInbox(!displayInbox);
+    }
+  }
+
   return (
-    <div className={style.main}>
+    <div className={displayInbox ? style.main : { dislay: "none" }}>
+      <header>
+        <span>amchat</span>
+        <p>Chris </p>
+      </header>
       {toggle && (
         <div className={style.currentChats}>
           {!stopRender.current &&
             chats.map((chat) => {
-              return <InboxCont key={Math.random()} chat={chat} />;
+              return (
+                <InboxCont
+                  key={Math.random()}
+                  chat={chat}
+                  toggleDisplay={toggleDisplay}
+                />
+              );
             })}
         </div>
       )}
 
       {!toggle && <AddChat />}
 
-      <button onClick={(e) => setToggle(!toggle)}>Add Chat</button>
-      <button>
-        <Link href="/join">Join</Link>
-      </button>
+      <div className={style.bottom}>
+        <button onClick={(e) => setToggle(!toggle)}>Add Chat</button>
+        <button>
+          <Link href="/join">Join</Link>
+        </button>
+      </div>
     </div>
   );
 }
